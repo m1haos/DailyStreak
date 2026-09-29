@@ -1,8 +1,9 @@
 name: Release
 
+# A push to main with a version that has no release yet publishes that version.
 on:
   push:
-    tags: ["v*"]
+    branches: [main]
 
 permissions:
   contents: write
@@ -10,34 +11,48 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v7
+
+      - name: Read the project version
+        id: version
+        run: |
+          version=$(grep '^version=' gradle.properties | cut -d= -f2)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if gh release view "v$version" > /dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-java@v6
+        if: steps.version.outputs.exists != 'true'
         with:
           distribution: temurin
           java-version: 25
       - uses: gradle/actions/setup-gradle@v6
+        if: steps.version.outputs.exists != 'true'
 
-      - name: Check that the tag matches the project version
-        run: |
-          version=$(grep '^version=' gradle.properties | cut -d= -f2)
-          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
-            echo "Tag $GITHUB_REF_NAME does not match version $version in gradle.properties"
-            exit 1
-          fi
-
-      - run: ./gradlew build
+      - name: Build
+        if: steps.version.outputs.exists != 'true'
+        run: ./gradlew build
 
       - name: Take release notes from CHANGELOG.md
+        if: steps.version.outputs.exists != 'true'
         run: |
-          awk -v v="${GITHUB_REF_NAME#v}" '
+          awk -v v="${{ steps.version.outputs.version }}" '
             $0 ~ "^## \\[" v "\\]" { found = 1; next }
             found && /^## \[/ { exit }
             found { print }
           ' CHANGELOG.md > notes.md
-          test -s notes.md
+          if [ ! -s notes.md ]; then
+            echo "CHANGELOG.md has no section for ${{ steps.version.outputs.version }}"
+            exit 1
+          fi
 
       - name: Publish the release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" build/libs/*.jar --title "DailyStreak ${GITHUB_REF_NAME#v}" --notes-file notes.md
+        if: steps.version.outputs.exists != 'true'
+        run: |
+          version=${{ steps.version.outputs.version }}
+          gh release create "v$version" build/libs/*.jar \
+              --target "$GITHUB_SHA" --title "DailyStreak $version" --notes-file notes.md
