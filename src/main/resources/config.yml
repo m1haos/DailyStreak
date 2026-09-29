@@ -1,0 +1,35 @@
+config-version: 1
+
+# Message language: ru or en. Texts are in plugins/DailyStreak/lang/ and can be edited freely.
+language: en
+
+# A new reward day starts at this time in this time zone, the same moment for every player.
+# Time zone names: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+reset:
+  time-zone: UTC
+  time: "00:00"
+
+streak:
+  # Days a player can miss without losing the streak. 0 means the reward has to be claimed every day.
+  grace-days: 0
+  # What comes after the last calendar day: restart (back to day 1) or repeat-last (the last day's reward every day).
+  after-last-day: restart
+
+# Remind players on join when today's reward is still waiting.
+join-reminder: true
+
+menu:
+  # Icon for days that are already claimed.
+  claimed-icon: lime_stained_glass_pane
+
+storage:
+  # sqlite keeps everything in plugins/DailyStreak/data.db and needs no setup.
+  # mysql works with both MySQL and MariaDB. Switching needs a server restart.
+  type: sqlite
+  mysql:
+    host: localhost
+    port: 3306
+    database: minecraft
+    username: minecraft
+    password: ""
+  table-prefix: dailystreak_

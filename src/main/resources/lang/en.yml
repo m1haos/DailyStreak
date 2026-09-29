@@ -1,0 +1,31 @@
+prefix: "<#7FB3FF>DailyStreak</#7FB3FF> <dark_gray>»</dark_gray>"
+
+reloaded: "<prefix> <#8BD17C>Settings, rewards and messages reloaded.</#8BD17C>"
+players-only: "<prefix> <#FF6B6B>Only players can open the reward calendar.</#FF6B6B>"
+not-loaded: "<prefix> <#F2C14E>Your data is still loading, try again in a few seconds.</#F2C14E>"
+player-not-found: "<prefix> <#FF6B6B><white><player></white> has never played on this server.</#FF6B6B>"
+reset: "<prefix> <gray>Streak of <white><player></white> has been reset.</gray>"
+
+join-reminder: "<prefix> <gray>Your daily reward is waiting: <click:run_command:/daily><hover:show_text:'Open the calendar'><#7FB3FF>/daily</#7FB3FF></hover></click></gray>"
+claimed: "<prefix> <#8BD17C>Day <white><day></white> reward claimed. Streak: <white><streak></white>.</#8BD17C>"
+already-claimed: "<prefix> <gray>Today's reward is already claimed. The next one in <white><time></white>.</gray>"
+streak-lost: "<prefix> <#F2C14E>You missed a day, so the streak starts over.</#F2C14E>"
+inventory-full: "<prefix> <#F2C14E>Not everything fit in your inventory, the rest is on the ground.</#F2C14E>"
+
+time: "<hours>h <minutes>m"
+
+menu:
+  title: "Daily rewards"
+  day: "<white>Day <day>"
+  status-available: "<#8BD17C>Click to claim"
+  status-claimed: "<gray>Claimed"
+  status-tomorrow: "<gray>Unlocks tomorrow"
+  status-locked: "<dark_gray>Locked"
+  rewards-header: "<gray>Rewards:"
+  reward-item: "<gray>• <white><amount> × <item>"
+  reward-money: "<gray>• <gold><amount>"
+  reward-command: "<gray>• <white><description>"
+  info-name: "<#7FB3FF>Your streak"
+  info-streak: "<gray>Days in a row: <white><streak>"
+  info-total: "<gray>Rewards claimed: <white><total>"
+  info-next: "<gray>New day in: <white><time>"

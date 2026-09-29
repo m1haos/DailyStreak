@@ -1,0 +1,31 @@
+prefix: "<#7FB3FF>DailyStreak</#7FB3FF> <dark_gray>»</dark_gray>"
+
+reloaded: "<prefix> <#8BD17C>Настройки, награды и сообщения перезагружены.</#8BD17C>"
+players-only: "<prefix> <#FF6B6B>Календарь наград может открыть только игрок.</#FF6B6B>"
+not-loaded: "<prefix> <#F2C14E>Ваши данные ещё загружаются, попробуйте через пару секунд.</#F2C14E>"
+player-not-found: "<prefix> <#FF6B6B>Игрок <white><player></white> ни разу не заходил на сервер.</#FF6B6B>"
+reset: "<prefix> <gray>Серия игрока <white><player></white> сброшена.</gray>"
+
+join-reminder: "<prefix> <gray>Вас ждёт ежедневная награда: <click:run_command:/daily><hover:show_text:'Открыть календарь'><#7FB3FF>/daily</#7FB3FF></hover></click></gray>"
+claimed: "<prefix> <#8BD17C>Награда за <white><day></white>-й день получена. Серия: <white><streak></white>.</#8BD17C>"
+already-claimed: "<prefix> <gray>Сегодняшняя награда уже получена. Следующая через <white><time></white>.</gray>"
+streak-lost: "<prefix> <#F2C14E>Вы пропустили день, поэтому серия начинается заново.</#F2C14E>"
+inventory-full: "<prefix> <#F2C14E>Не всё поместилось в инвентарь, остальное лежит у ваших ног.</#F2C14E>"
+
+time: "<hours> ч <minutes> мин"
+
+menu:
+  title: "Ежедневные награды"
+  day: "<white>День <day>"
+  status-available: "<#8BD17C>Нажмите, чтобы забрать"
+  status-claimed: "<gray>Получено"
+  status-tomorrow: "<gray>Откроется завтра"
+  status-locked: "<dark_gray>Пока закрыто"
+  rewards-header: "<gray>Награды:"
+  reward-item: "<gray>• <white><amount> × <item>"
+  reward-money: "<gray>• <gold><amount>"
+  reward-command: "<gray>• <white><description>"
+  info-name: "<#7FB3FF>Ваша серия"
+  info-streak: "<gray>Дней подряд: <white><streak>"
+  info-total: "<gray>Всего наград: <white><total>"
+  info-next: "<gray>Новый день через: <white><time>"

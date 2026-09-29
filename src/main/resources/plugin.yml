@@ -1,0 +1,29 @@
+name: DailyStreak
+version: '${version}'
+main: com.mdevstudio.dailystreak.DailyStreak
+api-version: '${apiVersion}'
+author: m1haos
+description: Daily login rewards on a streak calendar
+softdepend: [Vault, PlaceholderAPI]
+
+libraries:
+  - com.zaxxer:HikariCP:${hikariVersion}
+  - org.xerial:sqlite-jdbc:${sqliteVersion}
+  - org.mariadb.jdbc:mariadb-java-client:${mariadbVersion}
+
+permissions:
+  dailystreak.admin:
+    description: All admin commands
+    default: op
+    children:
+      dailystreak.command.reload: true
+      dailystreak.command.reset: true
+  dailystreak.command.daily:
+    description: Open the reward calendar
+    default: true
+  dailystreak.command.reload:
+    description: Reload settings, rewards and messages
+    default: op
+  dailystreak.command.reset:
+    description: Reset a player's streak
+    default: op

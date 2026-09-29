@@ -1,0 +1,69 @@
+# Reward calendar. A player claims day 1, then day 2 on the next day, and so on. Up to 28 days.
+#
+# Reward types:
+#   item      material and amount; stacks bigger than 64 are split
+#   money     amount, needs Vault and an economy plugin
+#   command   runs from the console, <player> becomes the player name;
+#             description is the line shown in the menu (MiniMessage), without it the reward is not listed
+#
+#   rewards:
+#     - type: item
+#       material: diamond
+#       amount: 3
+#     - type: money
+#       amount: 500
+#     - type: command
+#       command: "lp user <player> permission settemp kits.vip true 1d"
+#       description: "<gold>VIP kit for a day"
+
+days:
+  - icon: bread
+    rewards:
+      - type: item
+        material: bread
+        amount: 16
+
+  - icon: iron_ingot
+    rewards:
+      - type: item
+        material: iron_ingot
+        amount: 8
+
+  - icon: experience_bottle
+    rewards:
+      - type: item
+        material: experience_bottle
+        amount: 16
+
+  - icon: gold_ingot
+    rewards:
+      - type: item
+        material: gold_ingot
+        amount: 8
+
+  - icon: golden_apple
+    rewards:
+      - type: item
+        material: golden_apple
+        amount: 2
+      - type: item
+        material: cooked_beef
+        amount: 16
+
+  - icon: diamond
+    rewards:
+      - type: item
+        material: diamond
+        amount: 2
+
+  - icon: nether_star
+    rewards:
+      - type: item
+        material: diamond
+        amount: 5
+      - type: item
+        material: emerald
+        amount: 12
+      - type: item
+        material: totem_of_undying
+        amount: 1
