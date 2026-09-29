@@ -26,6 +26,8 @@ public final class Messages {
     public static final String NOT_LOADED = "not-loaded";
     public static final String PLAYER_NOT_FOUND = "player-not-found";
     public static final String RESET = "reset";
+    public static final String SET = "set";
+    public static final String DAY_OUT_OF_RANGE = "day-out-of-range";
     public static final String JOIN_REMINDER = "join-reminder";
     public static final String CLAIMED = "claimed";
     public static final String ALREADY_CLAIMED = "already-claimed";
@@ -57,7 +59,7 @@ public final class Messages {
 
     private Messages(YamlConfiguration lines) {
         this.lines = lines;
-        this.prefix = Placeholder.parsed("prefix", lines.getString("prefix", ""));
+        this.prefix = Placeholder.parsed("prefix", line("prefix"));
     }
 
     public static Messages load(JavaPlugin plugin, String language) {
@@ -84,8 +86,7 @@ public final class Messages {
     }
 
     public Component component(String key, TagResolver... placeholders) {
-        String line = lines.getString(key, key);
-        return MINI_MESSAGE.deserialize(line, prefix, TagResolver.resolver(placeholders));
+        return MINI_MESSAGE.deserialize(line(key), prefix, TagResolver.resolver(placeholders));
     }
 
     /**
@@ -105,6 +106,12 @@ public final class Messages {
 
     public String plainDuration(Duration duration) {
         return PlainTextComponentSerializer.plainText().serialize(duration(duration));
+    }
+
+    // getString(key, fallback) would skip the bundled defaults, so they are checked before falling back to the key.
+    private String line(String key) {
+        String line = lines.getString(key);
+        return line != null ? line : key;
     }
 
     private static String path(String language) {

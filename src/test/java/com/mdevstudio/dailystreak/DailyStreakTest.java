@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.mdevstudio.dailystreak.menu.CalendarMenu;
 import com.mdevstudio.dailystreak.streak.StreakState;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.concurrent.TimeUnit;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -124,6 +126,44 @@ class DailyStreakTest {
         server.dispatchCommand(server.getConsoleSender(), "daily reset " + player.getName());
 
         assertEquals(StreakState.EMPTY, plugin.streaks().state(player.getUniqueId()));
+    }
+
+    @Test
+    void setCommandMakesTheChosenDayAvailable() throws InterruptedException {
+        PlayerMock player = join();
+
+        server.dispatchCommand(server.getConsoleSender(), "daily set " + player.getName() + " 5");
+        leftClick(openMenu(player), FIRST_DAY_SLOT + 4);
+
+        assertEquals(2, count(player, Material.GOLDEN_APPLE));
+        assertEquals(5, plugin.streaks().state(player.getUniqueId()).streak());
+    }
+
+    @Test
+    void setCommandRefusesDaysPastTheCalendar() throws InterruptedException {
+        PlayerMock player = join();
+        player.setOp(true);
+        allMessages(player);
+
+        server.dispatchCommand(player, "daily set " + player.getName() + " 9");
+
+        assertEquals(StreakState.EMPTY, plugin.streaks().state(player.getUniqueId()));
+        assertTrue(allMessages(player).contains("pick one from 1 to 7"));
+    }
+
+    @Test
+    void linesMissingFromAnOldLanguageFileComeFromTheBundledOne() throws IOException, InterruptedException {
+        Files.writeString(plugin.getDataFolder().toPath().resolve("lang/en.yml"), "prefix: \"<gray>Old\"\n");
+        plugin.reload();
+        PlayerMock player = join();
+        player.setOp(true);
+        allMessages(player);
+
+        server.dispatchCommand(player, "daily set " + player.getName() + " 9");
+
+        String messages = allMessages(player);
+        assertTrue(messages.contains("Old"));
+        assertTrue(messages.contains("pick one from 1 to 7"));
     }
 
     @Test

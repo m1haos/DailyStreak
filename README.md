@@ -30,8 +30,9 @@ Libraries for the database (HikariCP, SQLite, MariaDB drivers) are downloaded by
 | `/daily` | `dailystreak.command.daily` | everyone | Open the calendar |
 | `/daily reload` | `dailystreak.command.reload` | op | Reload config, rewards and messages |
 | `/daily reset <player>` | `dailystreak.command.reset` | op | Reset a player's streak, online or offline |
+| `/daily set <player> <day>` | `dailystreak.command.set` | op | Make that calendar day available now, e.g. to give a streak back after downtime |
 
-`dailystreak.admin` gives both admin permissions.
+`dailystreak.admin` gives all admin permissions.
 
 ## Rewards
 

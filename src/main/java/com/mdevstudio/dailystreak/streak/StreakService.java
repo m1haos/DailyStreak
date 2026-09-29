@@ -108,6 +108,26 @@ public final class StreakService implements Listener {
         storage.delete(player);
     }
 
+    /**
+     * Makes the given calendar day, counted from zero, the one the player can claim right now.
+     */
+    public void setDay(UUID player, int dayIndex) {
+        long yesterday = plugin.gameDay().today() - 1;
+        StreakState current = online.get(player);
+        if (current != null) {
+            StreakState updated = new StreakState(dayIndex, yesterday, current.totalClaims());
+            online.put(player, updated);
+            storage.save(player, updated);
+            return;
+        }
+        storage.loadAsync(player)
+                .thenAccept(state -> storage.save(player, new StreakState(dayIndex, yesterday, state.totalClaims())))
+                .exceptionally(error -> {
+                    plugin.getSLF4JLogger().error("Could not change the streak of {}", player, error);
+                    return null;
+                });
+    }
+
     private void loadLater(Player player) {
         UUID id = player.getUniqueId();
         storage.loadAsync(id).whenComplete((state, error) -> {

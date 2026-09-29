@@ -32,8 +32,9 @@
 | `/daily` | `dailystreak.command.daily` | все | Открыть календарь |
 | `/daily reload` | `dailystreak.command.reload` | op | Перезагрузить конфиг, награды и сообщения |
 | `/daily reset <игрок>` | `dailystreak.command.reset` | op | Сбросить серию игрока, в сети он или нет |
+| `/daily set <игрок> <день>` | `dailystreak.command.set` | op | Сделать этот день календаря доступным сейчас, например вернуть серию после простоя сервера |
 
-`dailystreak.admin` включает оба админских права.
+`dailystreak.admin` включает все админские права.
 
 ## Награды
 

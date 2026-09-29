@@ -5,6 +5,8 @@ players-only: "<prefix> <#FF6B6B>Only players can open the reward calendar.</#FF
 not-loaded: "<prefix> <#F2C14E>Your data is still loading, try again in a few seconds.</#F2C14E>"
 player-not-found: "<prefix> <#FF6B6B><white><player></white> has never played on this server.</#FF6B6B>"
 reset: "<prefix> <gray>Streak of <white><player></white> has been reset.</gray>"
+set: "<prefix> <gray><white><player></white> can now claim day <white><day></white>.</gray>"
+day-out-of-range: "<prefix> <#FF6B6B>The calendar has <white><days></white> days, pick one from 1 to <days>.</#FF6B6B>"
 
 join-reminder: "<prefix> <gray>Your daily reward is waiting: <click:run_command:/daily><hover:show_text:'Open the calendar'><#7FB3FF>/daily</#7FB3FF></hover></click></gray>"
 claimed: "<prefix> <#8BD17C>Day <white><day></white> reward claimed. Streak: <white><streak></white>.</#8BD17C>"

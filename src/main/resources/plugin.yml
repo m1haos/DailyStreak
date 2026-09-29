@@ -18,6 +18,7 @@ permissions:
     children:
       dailystreak.command.reload: true
       dailystreak.command.reset: true
+      dailystreak.command.set: true
   dailystreak.command.daily:
     description: Open the reward calendar
     default: true
@@ -26,4 +27,7 @@ permissions:
     default: op
   dailystreak.command.reset:
     description: Reset a player's streak
+    default: op
+  dailystreak.command.set:
+    description: Choose which calendar day a player can claim now
     default: op

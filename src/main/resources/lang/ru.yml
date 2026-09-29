@@ -5,6 +5,8 @@ players-only: "<prefix> <#FF6B6B>Календарь наград может от
 not-loaded: "<prefix> <#F2C14E>Ваши данные ещё загружаются, попробуйте через пару секунд.</#F2C14E>"
 player-not-found: "<prefix> <#FF6B6B>Игрок <white><player></white> ни разу не заходил на сервер.</#FF6B6B>"
 reset: "<prefix> <gray>Серия игрока <white><player></white> сброшена.</gray>"
+set: "<prefix> <gray>Игрок <white><player></white> теперь может забрать награду <white><day></white>-го дня.</gray>"
+day-out-of-range: "<prefix> <#FF6B6B>В календаре <white><days></white> дн., выберите день от 1 до <days>.</#FF6B6B>"
 
 join-reminder: "<prefix> <gray>Вас ждёт ежедневная награда: <click:run_command:/daily><hover:show_text:'Открыть календарь'><#7FB3FF>/daily</#7FB3FF></hover></click></gray>"
 claimed: "<prefix> <#8BD17C>Награда за <white><day></white>-й день получена. Серия: <white><streak></white>.</#8BD17C>"
