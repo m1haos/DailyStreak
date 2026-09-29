@@ -17,7 +17,7 @@ Daily login rewards for Paper servers. Players open a calendar with `/daily`, cl
 
 ## Installation
 
-1. Put `DailyStreak.jar` into `plugins/`.
+1. Download the jar from [Releases](https://github.com/m1haos/DailyStreak/releases) and put it into `plugins/`.
 2. Start the server once. `config.yml`, `rewards.yml` and `lang/` appear in `plugins/DailyStreak/`.
 3. Set your rewards and time zone, then run `/daily reload`.
 

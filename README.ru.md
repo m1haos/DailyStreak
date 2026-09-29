@@ -17,7 +17,7 @@
 
 ## Установка
 
-1. Положите `DailyStreak.jar` в `plugins/`.
+1. Скачайте jar со страницы [Releases](https://github.com/m1haos/DailyStreak/releases) и положите в `plugins/`.
 2. Запустите сервер. В `plugins/DailyStreak/` появятся `config.yml`, `rewards.yml` и `lang/`.
 3. Настройте награды и часовой пояс, выполните `/daily reload`.
 
