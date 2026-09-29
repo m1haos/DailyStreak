@@ -53,9 +53,6 @@ public final class StreakService implements Listener {
         online.remove(event.getPlayer().getUniqueId());
     }
 
-    /**
-     * Picks up players that were already online when the plugin was enabled.
-     */
     public void loadOnline() {
         plugin.getServer().getOnlinePlayers().forEach(this::loadLater);
     }
